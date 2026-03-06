@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "Explain machine learning in simple terms.",
+    "response": "Machine learning is when computers learn patterns from data instead of being explicitly programmed."
+  },
+  {
+    "prompt": "What is a neural network?",
+    "response": "A neural network is a model inspired by the brain that learns relationships between inputs and outputs."
+  }
+]
