@@ -1,7 +1,7 @@
-llama_models                             0.3.0
-llama_stack                              0.2.23
-llama-stack-api                          0.5.1
-llama_stack_client                       0.5.1
-torch                                    2.9.0
-torchvision                              0.24.0
-transformers                             4.53.2
+llama_models==0.3.0
+llama_stack==0.2.23
+llama-stack-api==0.5.1
+llama_stack_client==0.5.1
+torch==2.2.2
+torchvision==0.17.2
+transformers==4.53.2
