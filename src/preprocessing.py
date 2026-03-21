@@ -1,5 +1,4 @@
 from datasets import load_dataset
-from .config import DATA_PATH, MAX_LENGTH
 
 def format_prompt(example):
     return f"""### Prompt:
@@ -8,23 +7,28 @@ def format_prompt(example):
 ### Response:
 {example['response']}"""
 
-def tokenize_function(example, tokenizer):
+
+def tokenize_function(example, tokenizer, max_length):
     text = format_prompt(example)
 
     tokens = tokenizer(
         text,
         truncation=True,
-        max_length=MAX_LENGTH
+        max_length=max_length
     )
 
     tokens["labels"] = tokens["input_ids"].copy()
     return tokens
 
-def load_data(tokenizer):
-    dataset = load_dataset("json", data_files=DATA_PATH)
+
+def load_data(tokenizer, config):
+    data_path = config["data"]["train_path"]
+    max_length = config["training"]["max_length"]
+
+    dataset = load_dataset("json", data_files=data_path)
 
     dataset = dataset.map(
-        lambda x: tokenize_function(x, tokenizer)
+        lambda x: tokenize_function(x, tokenizer, max_length)
     )
 
     return dataset["train"]

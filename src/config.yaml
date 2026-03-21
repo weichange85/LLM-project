@@ -1,0 +1,20 @@
+model:
+  path: "../model/huggingface_transformer_format"
+
+data:
+  train_path: "../data/train.json"
+
+training:
+  output_dir: "../lora_out"
+  batch_size: 1
+  epochs: 3
+  learning_rate: 2e-4
+  max_length: 512
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "v_proj"
