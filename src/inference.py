@@ -1,5 +1,6 @@
 from transformers import AutoModelForCausalLM
 from peft import PeftModel
+import torch
 
 def load_inference_model(config):
     model_path = config["model"]["path"]
