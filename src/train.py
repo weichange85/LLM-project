@@ -1,8 +1,17 @@
 from transformers import TrainingArguments, Trainer
+import os
+import shutil
 
 def train(model, dataset, config):
 
     training_cfg = config["training"]
+    output_dir = training_cfg["output_dir"]
+
+    # ✅ clear old outputs
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+
+    os.makedirs(output_dir, exist_ok=True)
 
     training_args = TrainingArguments(
         output_dir=training_cfg["output_dir"],

@@ -4,10 +4,10 @@ import torch
 
 def load_inference_model(config):
     model_path = config["model"]["path"]
-    output_dir = config["training"]["output_dir"]
+    lora_path = config["model"]["lora_path"]
 
     base_model = AutoModelForCausalLM.from_pretrained(model_path)
-    model = PeftModel.from_pretrained(base_model, output_dir)
+    model = PeftModel.from_pretrained(base_model, lora_path)
 
     model.eval()
     return model
